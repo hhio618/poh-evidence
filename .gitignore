@@ -4,3 +4,8 @@ node_modules
 #Hardhat files
 cache
 artifacts
+delegator/node_modules
+backend/venv
+backend/__pycache__
+
+

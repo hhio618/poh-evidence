@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Mochiy+Pop+P+One&display=swap");
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.navbar-light .navbar-brand {
+  color: #0c55a4;
+  font-family: "Mochiy Pop P One", sans-serif;
+}
+.bg-transparent {
+  background: whitesmoke !important;
+}
+.navbar-light .navbar-nav .nav-link {
+  color: #929cae;
+  font-family: sans-serif;
+}
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #0c55a4;
+  font-family: "Mochiy Pop P One", sans-serif;
+}
