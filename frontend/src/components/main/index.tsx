@@ -149,7 +149,7 @@ export const Main: React.FC = () => {
             className="d-flex h-100 justify-content-center align-items-center"
           >
             <Card style={{ maxWidth: "100%" }}>
-              <Card.Img variant="top" src="/images/meta-mask.png" />
+              <Card.Img variant="top" src="/images/sign-image.jpg" />
               <Card.Body>
                 <Card.Title>Set Signature</Card.Title>
                 <Card.Text>Mark it and sign</Card.Text>
@@ -173,7 +173,7 @@ export const Main: React.FC = () => {
             className="d-flex h-100 justify-content-center align-items-center"
           >
             <Card style={{ maxWidth: "100%" }}>
-              <Card.Img variant="top" src="/images/meta-mask.png" />
+              <Card.Img variant="top" src="/images/send-to-server.png"  />
               <Card.Body>
                 <Card.Title>Proof your humanity</Card.Title>
                 <Card.Text>
