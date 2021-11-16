@@ -7,5 +7,6 @@ artifacts
 delegator/node_modules
 backend/venv
 backend/__pycache__
-
+.idea
+*.DS_Store
 

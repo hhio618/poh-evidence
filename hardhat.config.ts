@@ -11,11 +11,13 @@ import "hardhat-deploy-ethers"
 import "hardhat-gas-reporter"
 import "hardhat-spdx-license-identifier"
 import "hardhat-typechain"
+import "@nomiclabs/hardhat-web3";
 import "hardhat-watcher"
 import "solidity-coverage"
 
 import { HardhatUserConfig } from "hardhat/types"
 import { removeConsoleLog } from "hardhat-preprocessor"
+import { web3, Web3 } from "hardhat"
 
 
 const accounts = {
@@ -70,12 +72,10 @@ const config: HardhatUserConfig = {
       saveDeployments: true,
       tags: ["test", "local"],
     },
-    iotextestnet: {
-      url: "https://babel-api.testnet.iotex.io",
-      accounts,
-      chainId: 4690,
-      gas: 8500000,
-      gasPrice: 1000000000000
+    ropsten: {
+      url: `https://ropsten.infura.io/v3/${process.env.INFURA_API_KEY}`,
+      accounts: [`0x${process.env.MNEMONIC}`],
+      gasPrice: 50000000000,
     },
   },
   paths: {
