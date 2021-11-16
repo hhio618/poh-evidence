@@ -1,12 +1,13 @@
 node_modules
 .env
 *.log
-#Hardhat files
-cache
-artifacts
-delegator/node_modules
-backend/venv
-backend/__pycache__
 .idea
 *.DS_Store
-
+.vscode
+delegate/frontend/.next
+delegate/backend/venv
+delegate/backend/__pycache__
+tmp
+#Hardhat files
+core/cache
+core/artifacts

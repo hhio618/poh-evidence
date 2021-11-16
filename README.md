@@ -1,5 +1,14 @@
 # poh-evidence
 
+## TODO
+- [ ] Add test to smart contracts
+- [ ] Verify smart contracts on-chain
+- [ ] Verify smart contracts off-chain
+- [ ] Add docker-compose 
+- [ ] Add prebuild image
+- [ ] Add .github build action
+- [ ] Add test to python package
+
 ## Quick start
 
 The first things you need to do are cloning this repository and installing its
