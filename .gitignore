@@ -11,3 +11,5 @@ tmp
 #Hardhat files
 core/cache
 core/artifacts
+frontend/**
+backend/**

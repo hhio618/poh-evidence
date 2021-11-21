@@ -1,8 +1,16 @@
 import React from "react";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
-import { Logo } from "@components";
+import { useRouter } from 'next/router'
+
 
 export const Header: React.FC = () => {
+  const router = useRouter()
+  function handleVerifyClick(){
+    router.push('/verify/')
+  }
+  function handleHomeClicked(){
+    router.push('/')
+  }
   return (
     <Navbar collapseOnSelect expand="lg" bg="transparent" variant="light">
       <Container>
@@ -10,8 +18,8 @@ export const Header: React.FC = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ml-auto">
-            <Nav.Link href="#hcaptcha">Human Captcha</Nav.Link>
-            <Nav.Link href="#dapp">DAPP</Nav.Link>
+            <Nav.Link onClick={handleHomeClicked}>Home</Nav.Link>
+            <Nav.Link onClick={handleVerifyClick}>Verify</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

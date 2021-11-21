@@ -48,8 +48,26 @@ def poh_check():
         #     print("Gas cost exceeds 100000")
         app.logger.info(data)
         return jsonify({
-            "message": "data received successfully"
+            "message": "data received successfully",
+            "identity_text": "SomeIdentityTextValue"
         }), 200
+    else:
+        return jsonify({
+            "message": "Error, data is not valid"
+        }), 400
+
+
+@app.route("/api/verify/", methods=['post', ])
+def verify():
+    app.logger.debug(request.json)
+
+    textToVerify = request.json.get('verifyText')
+    print(textToVerify)
+    if textToVerify:
+        return jsonify({
+                "message": "data received successfully",
+
+            }), 200
     else:
         return jsonify({
             "message": "Error, data is not valid"

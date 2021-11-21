@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export const Footer: React.FC = () => {
   return (
-    <div className="text-center py-4" style={{ backgroundColor: "#282c34" }}>
+    <div className="text-center py-4" style={{ backgroundColor: "#8E5A30" }}>
       <ul className="d-flex justify-content-center list-unstyled p-0 m-0">
         <li className="mx-2">
           <Image

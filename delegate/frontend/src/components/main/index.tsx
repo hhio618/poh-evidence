@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col, Card, ProgressBar } from "react-bootstrap";
+import { Container, Row, Col, Card, ProgressBar, Form } from "react-bootstrap";
 import Web3 from "web3";
 import { Button } from "@components";
 import HCaptcha from "@hcaptcha/react-hcaptcha";
@@ -12,6 +12,8 @@ export const Main: React.FC = () => {
   const [hCaptchaVerification, sethCaptchaVerification] = useState(false);
   const [signature, setSignature] = useState("");
   const [address, setAddress] = useState("");
+  const resultTextAreaRef = React.useRef<HTMLTextAreaElement|null>(null);
+  const [showResultTextArea, setShowResultTextArea] = useState(false);
   const signatureText = "poh-core-evidence";
 
   // Empty web3 instance
@@ -58,7 +60,6 @@ export const Main: React.FC = () => {
         };
       })
     );
-
     setAccounts(newAccounts);
   };
 
@@ -100,20 +101,42 @@ export const Main: React.FC = () => {
       signature: signature,
       message: signatureText,
     };
-    axios.post(process.env.FLASK_HOST!, data).then((response) => {
-      if (response.status == 200) {
-        alert("Data has been submitted successfully");
-        location.href = "/";
-      }
-    });
+    axios
+      .post(process.env.FLASK_HOST!, data)
+      .then((response) => {
+        console.log(response);
+        if (response.status == 200) {
+          alert("Data has been submitted successfully");
+          setShowResultTextArea(true);
+          resultTextAreaRef.current!.value = response.data.identity_text;
+        }
+      })
+      .catch((error) => {
+        alert("It seems there are some errors in submitted data try again");
+      });
   }
-  console.log(process.env.FLASK_HOST)
+  console.log(process.env.FLASK_HOST);
   return (
     <div className="text-center py-4">
       <Container
         style={{ minHeight: "70vh" }}
         className="text-center pt-auto pb-auto"
       >
+        {showResultTextArea && <Row className="w-100 justify-content-center" >
+          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+            <Form.Label>
+              Copy the following text, you can proof your humanity using it from now on.
+            </Form.Label>
+            <Form.Control
+              as="textarea"
+              rows={3}
+              ref={resultTextAreaRef}
+              style={{resize: 'none'}}
+              disabled={true}
+              required={true}
+            />
+          </Form.Group>
+        </Row>}
         <Row className="w-100 pl-5 pr-5 mb-3 mt-5">
           <ProgressBar now={progressValue} className="w-100" />
         </Row>
@@ -149,7 +172,11 @@ export const Main: React.FC = () => {
             className="d-flex h-100 justify-content-center align-items-center"
           >
             <Card style={{ maxWidth: "100%" }}>
-              <Card.Img variant="top" src="/images/sign-image.jpg" />
+              <Card.Img
+                variant="top"
+                src="/images/sign-image.png"
+                style={{ borderRadius: "10px", padding: "5px" }}
+              />
               <Card.Body>
                 <Card.Title>Set Signature</Card.Title>
                 <Card.Text>Mark it and sign</Card.Text>
@@ -173,7 +200,11 @@ export const Main: React.FC = () => {
             className="d-flex h-100 justify-content-center align-items-center"
           >
             <Card style={{ maxWidth: "100%" }}>
-              <Card.Img variant="top" src="/images/send-to-server.png"  />
+              <Card.Img
+                variant="top"
+                src="/images/submit-image.png"
+                style={{ borderRadius: "10px", padding: "5px" }}
+              />
               <Card.Body>
                 <Card.Title>Proof your humanity</Card.Title>
                 <Card.Text>
